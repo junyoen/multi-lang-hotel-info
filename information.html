@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #2c3e50, #2c3e50);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(28, 28, 28, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #1a252f, #2c3e50);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(145deg, #2c3e50, #1a252f);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='index.html'" class="back-button">← 메인으로 돌아가기</button>
+
+        <!-- 한국어 섹션 -->
+        <div id="ko" class="content hidden">
+            <h1>호텔 정보</h1>
+            <img src="images/hotel-info/hotel-info-ko.png" alt="호텔 정보" class="info-image">
+        </div>
+
+        <!-- 영어 섹션 -->
+        <div id="en" class="content hidden">
+            <h1>Hotel Information</h1>
+            <img src="images/hotel-info/hotel-info-en.png" alt="Hotel Information" class="info-image">
+        </div>
+
+        <!-- 일본어 섹션 -->
+        <div id="ja" class="content hidden">
+            <h1>ホテル情報</h1>
+            <img src="images/hotel-info/hotel-info-ja.png" alt="ホテル情報" class="info-image">
+        </div>
+
+        <!-- 중국어 섹션 -->
+        <div id="zh" class="content hidden">
+            <h1>酒店信息</h1>
+            <img src="images/hotel-info/hotel-info-zh.png" alt="酒店信息" class="info-image">
+        </div>
+    </div>
+
+    <script>
+        // URL에서 언어 파라미터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const language = urlParams.get('lang') || 'ko'; // 기본값은 한국어
+
+        // 해당 언어 컨텐츠 표시
+        document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
+        document.getElementById(language).classList.remove('hidden');
+
+        // 뒤로가기 버튼 텍스트 설정
+        const backButtonTexts = {
+            ko: '← 메인으로 돌아가기',
+            en: '← Back to Main',
+            ja: '← メインに戻る',
+            zh: '← 返回主页'
+        };
+        document.querySelector('.back-button').textContent = backButtonTexts[language];
+    </script>
+</body>
+</html>
