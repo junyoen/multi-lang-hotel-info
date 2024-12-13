@@ -249,20 +249,23 @@
     </div>
 
     <script>
-        let currentLanguage = '';
-
         function selectLanguage(lang) {
-            currentLanguage = lang;
+            // 모든 메뉴 숨기기
+            document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
+            // 언어 선택 화면 숨기기
             document.getElementById('language-select').classList.add('hidden');
-            document.getElementById('mainMenu').classList.remove('hidden');
-            document.querySelectorAll('.menu-content').forEach(el => el.classList.add('hidden'));
+            // 선택된 언어의 메뉴 보여주기
             document.getElementById(`menu-${lang}`).classList.remove('hidden');
+            // 선택된 언어 저장
             localStorage.setItem('selectedLanguage', lang);
         }
 
         function showLanguageSelect() {
+            // 모든 메뉴 숨기기
             document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
+            // 언어 선택 화면 보여주기
             document.getElementById('language-select').classList.remove('hidden');
+            // 저장된 언어 설정 제거
             localStorage.removeItem('selectedLanguage');
         }
 
@@ -271,12 +274,11 @@
             window.location.href = `${page}.html?lang=${lang}`;
         }
 
+        // 페이지 로드 시 저장된 언어가 있다면 해당 메뉴 표시
         window.onload = function() {
             const storedLang = localStorage.getItem('selectedLanguage');
             if (storedLang) {
                 selectLanguage(storedLang);
-            } else {
-                document.getElementById('language-select').classList.remove('hidden');
             }
         };
     </script>
