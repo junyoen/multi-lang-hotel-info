@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #2c3e50, #2c3e50);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(28, 28, 28, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .restaurant-info {
+            margin-bottom: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .description {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .notice {
+            background: linear-gradient(145deg, #2c3e50, #1a252f);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #1a252f, #2c3e50);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(145deg, #2c3e50, #1a252f);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='index.html'" class="back-button">← 메인으로 돌아가기</button>
+
+        <!-- 한국어 섹션 -->
+        <div id="ko" class="content hidden">
+            <h1>리앤이 라마띠네</h1>
+            <div class="description">
+                특급호텔 경력의 고도화된 실력을 갖춘 조리사들이 전 세계에서 맛볼 수 있는 다양한 메뉴를 제공해 드리고 있습니다. 항상 신선하고 깨끗한 식재료만을 사용하여 고객님의 선호도에 맞게 호텔 조리사들이 정성스럽게 요리합니다.
+            </div>
+            <div class="info-grid">
+                <div class="info-label">운영시간</div>
+                <div>매일 07:00 - 10:00 (마지막 입장 09:30)</div>
+                <div class="info-label">위치</div>
+                <div>2층</div>
+                <div class="info-label">수용인원</div>
+                <div>62석</div>
+            </div>
+            <div class="notice">
+                <h2>Food Allergy Notice</h2>
+                <p>특정 음식에 알러지가 있는 분들은 직원에게 문의하여 주시기 바랍니다.</p>
+            </div>
+        </div>
+
+        <!-- 영어 섹션 -->
+        <div id="en" class="content hidden">
+            <h1>Le & La Matinee</h1>
+            <div class="description">
+                Our chefs, with their refined skills honed at luxury hotels, offer diverse menus from around the world. Using only fresh and clean ingredients, our hotel chefs carefully prepare dishes to match our guests' preferences.
+            </div>
+            <div class="info-grid">
+                <div class="info-label">Hours</div>
+                <div>Daily 07:00 - 10:00 (Last admission 09:30)</div>
+                <div class="info-label">Location</div>
+                <div>2nd Floor</div>
+                <div class="info-label">Seating Capacity</div>
+                <div>62 seats</div>
+            </div>
+            <div class="notice">
+                <h2>Food Allergy Notice</h2>
+                <p>Please inform our staff of any food allergies before ordering.</p>
+            </div>
+        </div>
+
+        <!-- 일본어 섹션 -->
+        <div id="ja" class="content hidden">
+            <h1>レ・エ・ラ・マティネ</h1>
+            <div class="description">
+                高級ホテル経験を持つ熟練シェフたちが、世界中の様々なメニューをご提供いたします。常に新鮮で清潔な食材のみを使用し、お客様のお好みに合わせてホテルシェフが丁寧に調理いたします。
+            </div>
+            <div class="info-grid">
+                <div class="info-label">営業時間</div>
+                <div>毎日 07:00 - 10:00 (ラストオーダー 09:30)</div>
+                <div class="info-label">場所</div>
+                <div>2階</div>
+                <div class="info-label">収容人数</div>
+                <div>62席</div>
+            </div>
+            <div class="notice">
+                <h2>食物アレルギーについて</h2>
+                <p>特定の食材にアレルギーをお持ちのお客様は、スタッフまでお申し付けください。</p>
+            </div>
+        </div>
+
+        <!-- 중국어 섹션 -->
+        <div id="zh" class="content hidden">
+            <h1>Le & La Matinee 餐厅</h1>
+            <div class="description">
+                我们拥有在高级酒店积累丰富经验的厨师团队，为您提供来自世界各地的多样化菜单。我们始终使用新鲜和优质的食材，酒店厨师们将根据客人的喜好精心烹饪每一道菜品。
+            </div>
+            <div class="info-grid">
+                <div class="info-label">营业时间</div>
+                <div>每日 07:00 - 10:00 (最后入场 09:30)</div>
+                <div class="info-label">位置</div>
+                <div>2楼</div>
+                <div class="info-label">可容纳人数</div>
+                <div>62座</div>
+            </div>
+            <div class="notice">
+                <h2>食物过敏提示</h2>
+                <p>如果对特定食物过敏，请提前告知我们的工作人员。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URL에서 언어 파라미터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const language = urlParams.get('lang') || 'ko';
+
+        // 해당 언어 컨텐츠 표시
+        document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
+        document.getElementById(language).classList.remove('hidden');
+
+        // 뒤로가기 버튼 텍스트 설정
+        const backButtonTexts = {
+            ko: '← 메인으로 돌아가기',
+            en: '← Back to Main',
+            ja: '← メインに戻る',
+            zh: '← 返回主页'
+        };
+        document.querySelector('.back-button').textContent = backButtonTexts[language];
+    </script>
+</body>
+</html>
