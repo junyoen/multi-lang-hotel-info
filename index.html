@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Guide</title>
     <style>
+        /* 기존 스타일 유지 */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -89,6 +90,14 @@
             display: none;
         }
 
+        /* 새로 추가된 뒤로가기 버튼 스타일 */
+        .back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, #1a252f, #2c3e50);
+        }
+
         @media (max-width: 600px) {
             .container {
                 margin: 20px;
@@ -118,6 +127,7 @@
 
         <!-- Korean Menu -->
         <div id="menu-ko" class="hidden">
+            <button onclick="showLanguageSelect()" class="back-button">← 언어 선택으로 돌아가기</button>
             <div class="menu-grid">
                 <div class="menu-item" onclick="navigate('reservation')">
                     <div class="menu-icon">🏨</div>
@@ -148,17 +158,95 @@
 
         <!-- English Menu -->
         <div id="menu-en" class="hidden">
-            <!-- Similar structure with English text -->
+            <button onclick="showLanguageSelect()" class="back-button">← Back to Language Selection</button>
+            <div class="menu-grid">
+                <div class="menu-item" onclick="navigate('reservation')">
+                    <div class="menu-icon">🏨</div>
+                    <div>Reservation</div>
+                </div>
+                <div class="menu-item" onclick="navigate('information')">
+                    <div class="menu-icon">ℹ️</div>
+                    <div>Hotel Information</div>
+                </div>
+                <div class="menu-item" onclick="navigate('tv')">
+                    <div class="menu-icon">📺</div>
+                    <div>TV Channels</div>
+                </div>
+                <div class="menu-item" onclick="navigate('pillow')">
+                    <div class="menu-icon">🛏️</div>
+                    <div>Pillow Menu</div>
+                </div>
+                <div class="menu-item" onclick="navigate('atoz')">
+                    <div class="menu-icon">📋</div>
+                    <div>Hotel Services A to Z</div>
+                </div>
+                <div class="menu-item" onclick="navigate('dining')">
+                    <div class="menu-icon">🍽️</div>
+                    <div>Dining</div>
+                </div>
+            </div>
         </div>
 
         <!-- Japanese Menu -->
         <div id="menu-ja" class="hidden">
-            <!-- Similar structure with Japanese text -->
+            <button onclick="showLanguageSelect()" class="back-button">← 言語選択に戻る</button>
+            <div class="menu-grid">
+                <div class="menu-item" onclick="navigate('reservation')">
+                    <div class="menu-icon">🏨</div>
+                    <div>予約</div>
+                </div>
+                <div class="menu-item" onclick="navigate('information')">
+                    <div class="menu-icon">ℹ️</div>
+                    <div>ホテル情報</div>
+                </div>
+                <div class="menu-item" onclick="navigate('tv')">
+                    <div class="menu-icon">📺</div>
+                    <div>TVチャンネル</div>
+                </div>
+                <div class="menu-item" onclick="navigate('pillow')">
+                    <div class="menu-icon">🛏️</div>
+                    <div>枕メニュー</div>
+                </div>
+                <div class="menu-item" onclick="navigate('atoz')">
+                    <div class="menu-icon">📋</div>
+                    <div>ホテルサービス A to Z</div>
+                </div>
+                <div class="menu-item" onclick="navigate('dining')">
+                    <div class="menu-icon">🍽️</div>
+                    <div>レストラン</div>
+                </div>
+            </div>
         </div>
 
         <!-- Chinese Menu -->
         <div id="menu-zh" class="hidden">
-            <!-- Similar structure with Chinese text -->
+            <button onclick="showLanguageSelect()" class="back-button">← 返回语言选择</button>
+            <div class="menu-grid">
+                <div class="menu-item" onclick="navigate('reservation')">
+                    <div class="menu-icon">🏨</div>
+                    <div>预订</div>
+                </div>
+                <div class="menu-item" onclick="navigate('information')">
+                    <div class="menu-icon">ℹ️</div>
+                    <div>酒店信息</div>
+                </div>
+                <div class="menu-item" onclick="navigate('tv')">
+                    <div class="menu-icon">📺</div>
+                    <div>电视频道</div>
+                </div>
+                <div class="menu-item" onclick="navigate('pillow')">
+                    <div class="menu-icon">🛏️</div>
+                    <div>枕头选择</div>
+                </div>
+                <div class="menu-item" onclick="navigate('atoz')">
+                    <div class="menu-icon">📋</div>
+                    <div>酒店服务 A to Z</div>
+                </div>
+                <div class="menu-item" onclick="navigate('dining')">
+                    <div class="menu-icon">🍽️</div>
+                    <div>餐厅</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -172,6 +260,15 @@
             document.getElementById(`menu-${lang}`).classList.remove('hidden');
             // Store selected language
             localStorage.setItem('selectedLanguage', lang);
+        }
+
+        function showLanguageSelect() {
+            // Hide all menus
+            document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
+            // Show language selection
+            document.getElementById('language-select').classList.remove('hidden');
+            // Clear stored language
+            localStorage.removeItem('selectedLanguage');
         }
 
         function navigate(page) {
