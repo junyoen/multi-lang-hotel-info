@@ -66,8 +66,12 @@
             background: linear-gradient(145deg, #2c3e50, #1a252f);
         }
 
-        .hidden {
+        .content {
             display: none;
+        }
+
+        .content.active {
+            display: block;
         }
 
         @media (max-width: 600px) {
@@ -83,28 +87,28 @@
         <button onclick="window.location.href='index.html'" class="back-button">← 메인으로 돌아가기</button>
 
         <!-- 한국어 섹션 -->
-        <div id="ko" class="content hidden">
+        <div id="ko" class="content">
             <h1>호텔 서비스 A to Z</h1>
             <p>호텔의 모든 서비스를 확인하실 수 있습니다.</p>
             <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">서비스 가이드 보기</a>
         </div>
 
         <!-- 영어 섹션 -->
-        <div id="en" class="content hidden">
+        <div id="en" class="content">
             <h1>Hotel Services A to Z</h1>
             <p>Check all available hotel services.</p>
             <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">View Service Guide</a>
         </div>
 
         <!-- 일본어 섹션 -->
-        <div id="ja" class="content hidden">
+        <div id="ja" class="content">
             <h1>ホテルサービス A to Z</h1>
             <p>ホテルの全てのサービスをご確認いただけます。</p>
             <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">サービスガイドを見る</a>
         </div>
 
         <!-- 중국어 섹션 -->
-        <div id="zh" class="content hidden">
+        <div id="zh" class="content">
             <h1>酒店服务 A to Z</h1>
             <p>查看所有可用的酒店服务。</p>
             <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">查看服务指南</a>
@@ -112,22 +116,32 @@
     </div>
 
     <script>
-        // URL에서 언어 파라미터 가져오기
-        const urlParams = new URLSearchParams(window.location.search);
-        const language = urlParams.get('lang') || 'ko';
+        // 페이지 로드 시 실행할 함수
+        window.onload = function() {
+            // URL에서 언어 파라미터 가져오기
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get('lang') || 'ko';
 
-        // 해당 언어 컨텐츠 표시
-        document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
-        document.getElementById(language).classList.remove('hidden');
+            // 모든 content 숨기기
+            document.querySelectorAll('.content').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // 해당 언어의 content 보여주기
+            const selectedContent = document.getElementById(language);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
 
-        // 뒤로가기 버튼 텍스트 설정
-        const backButtonTexts = {
-            ko: '← 메인으로 돌아가기',
-            en: '← Back to Main',
-            ja: '← メインに戻る',
-            zh: '← 返回主页'
+            // 뒤로가기 버튼 텍스트 설정
+            const backButtonTexts = {
+                ko: '← 메인으로 돌아가기',
+                en: '← Back to Main',
+                ja: '← メインに戻る',
+                zh: '← 返回主页'
+            };
+            document.querySelector('.back-button').textContent = backButtonTexts[language];
         };
-        document.querySelector('.back-button').textContent = backButtonTexts[language];
     </script>
 </body>
 </html>
