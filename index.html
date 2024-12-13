@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Guide</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #2c3e50, #2c3e50);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(28, 28, 28, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        button {
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            background: linear-gradient(145deg, #2c3e50, #1a252f);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .language-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Selection -->
+        <div id="language-select">
+            <h1>Welcome / 환영합니다 / ようこそ / 欢迎</h1>
+            <div class="language-buttons">
+                <button onclick="selectLanguage('ko')">한국어</button>
+                <button onclick="selectLanguage('en')">English</button>
+                <button onclick="selectLanguage('ja')">日本語</button>
+                <button onclick="selectLanguage('zh')">中文</button>
+            </div>
+        </div>
+
+        <!-- Korean Menu -->
+        <div id="menu-ko" class="hidden">
+            <div class="menu-grid">
+                <div class="menu-item" onclick="navigate('reservation')">
+                    <div class="menu-icon">🏨</div>
+                    <div>예약하기</div>
+                </div>
+                <div class="menu-item" onclick="navigate('information')">
+                    <div class="menu-icon">ℹ️</div>
+                    <div>호텔 정보</div>
+                </div>
+                <div class="menu-item" onclick="navigate('tv')">
+                    <div class="menu-icon">📺</div>
+                    <div>TV 채널</div>
+                </div>
+                <div class="menu-item" onclick="navigate('pillow')">
+                    <div class="menu-icon">🛏️</div>
+                    <div>베개 메뉴</div>
+                </div>
+                <div class="menu-item" onclick="navigate('atoz')">
+                    <div class="menu-icon">📋</div>
+                    <div>호텔 서비스 A to Z</div>
+                </div>
+                <div class="menu-item" onclick="navigate('dining')">
+                    <div class="menu-icon">🍽️</div>
+                    <div>레스토랑</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- English Menu -->
+        <div id="menu-en" class="hidden">
+            <!-- Similar structure with English text -->
+        </div>
+
+        <!-- Japanese Menu -->
+        <div id="menu-ja" class="hidden">
+            <!-- Similar structure with Japanese text -->
+        </div>
+
+        <!-- Chinese Menu -->
+        <div id="menu-zh" class="hidden">
+            <!-- Similar structure with Chinese text -->
+        </div>
+    </div>
+
+    <script>
+        function selectLanguage(lang) {
+            // Hide all menus
+            document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
+            // Hide language selection
+            document.getElementById('language-select').classList.add('hidden');
+            // Show selected language menu
+            document.getElementById(`menu-${lang}`).classList.remove('hidden');
+            // Store selected language
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        function navigate(page) {
+            const lang = localStorage.getItem('selectedLanguage') || 'ko';
+            window.location.href = `${page}.html?lang=${lang}`;
+        }
+
+        // Check for stored language preference
+        window.onload = function() {
+            const storedLang = localStorage.getItem('selectedLanguage');
+            if (storedLang) {
+                selectLanguage(storedLang);
+            }
+        };
+    </script>
+</body>
+</html>
