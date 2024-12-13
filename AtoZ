@@ -86,28 +86,28 @@
         <div id="ko" class="content hidden">
             <h1>호텔 서비스 A to Z</h1>
             <p>호텔의 모든 서비스를 확인하실 수 있습니다.</p>
-            <a href="https://www.ninetreehotels.com/nttour/index.php?lang=ko" class="redirect-button" target="_blank">서비스 가이드 보기</a>
+            <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">서비스 가이드 보기</a>
         </div>
 
         <!-- 영어 섹션 -->
         <div id="en" class="content hidden">
             <h1>Hotel Services A to Z</h1>
             <p>Check all available hotel services.</p>
-            <a href="https://www.ninetreehotels.com/nttour/index.php?lang=en" class="redirect-button" target="_blank">View Service Guide</a>
+            <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">View Service Guide</a>
         </div>
 
         <!-- 일본어 섹션 -->
         <div id="ja" class="content hidden">
             <h1>ホテルサービス A to Z</h1>
             <p>ホテルの全てのサービスをご確認いただけます。</p>
-            <a href="https://www.ninetreehotels.com/nttour/index.php?lang=jp" class="redirect-button" target="_blank">サービスガイドを見る</a>
+            <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">サービスガイドを見る</a>
         </div>
 
         <!-- 중국어 섹션 -->
         <div id="zh" class="content hidden">
             <h1>酒店服务 A to Z</h1>
             <p>查看所有可用的酒店服务。</p>
-            <a href="https://www.ninetreehotels.com/nttour/index.php?lang=ch" class="redirect-button" target="_blank">查看服务指南</a>
+            <a href="https://www.ninetreehotels.com/nttour/index.php" class="redirect-button" target="_blank">查看服务指南</a>
         </div>
     </div>
 
