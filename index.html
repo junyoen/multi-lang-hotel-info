@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Guide</title>
     <style>
-        /* 기존 스타일 유지 */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -90,7 +89,6 @@
             display: none;
         }
 
-        /* 새로 추가된 뒤로가기 버튼 스타일 */
         .back-button {
             padding: 10px 20px;
             font-size: 16px;
@@ -129,7 +127,7 @@
         <div id="menu-ko" class="hidden">
             <button onclick="showLanguageSelect()" class="back-button">← 언어 선택으로 돌아가기</button>
             <div class="menu-grid">
-                <div class="menu-item" onclick="navigate('reservation')">
+                <div class="menu-item" onclick="window.location.href='https://www.ninetreehotels.com/nth4/'">
                     <div class="menu-icon">🏨</div>
                     <div>예약하기</div>
                 </div>
@@ -160,7 +158,7 @@
         <div id="menu-en" class="hidden">
             <button onclick="showLanguageSelect()" class="back-button">← Back to Language Selection</button>
             <div class="menu-grid">
-                <div class="menu-item" onclick="navigate('reservation')">
+                <div class="menu-item" onclick="window.location.href='https://www.ninetreehotels.com/nth4/'">
                     <div class="menu-icon">🏨</div>
                     <div>Reservation</div>
                 </div>
@@ -191,7 +189,7 @@
         <div id="menu-ja" class="hidden">
             <button onclick="showLanguageSelect()" class="back-button">← 言語選択に戻る</button>
             <div class="menu-grid">
-                <div class="menu-item" onclick="navigate('reservation')">
+                <div class="menu-item" onclick="window.location.href='https://www.ninetreehotels.com/nth4/'">
                     <div class="menu-icon">🏨</div>
                     <div>予約</div>
                 </div>
@@ -222,7 +220,7 @@
         <div id="menu-zh" class="hidden">
             <button onclick="showLanguageSelect()" class="back-button">← 返回语言选择</button>
             <div class="menu-grid">
-                <div class="menu-item" onclick="navigate('reservation')">
+                <div class="menu-item" onclick="window.location.href='https://www.ninetreehotels.com/nth4/'">
                     <div class="menu-icon">🏨</div>
                     <div>预订</div>
                 </div>
@@ -251,23 +249,20 @@
     </div>
 
     <script>
+        let currentLanguage = '';
+
         function selectLanguage(lang) {
-            // Hide all menus
-            document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
-            // Hide language selection
+            currentLanguage = lang;
             document.getElementById('language-select').classList.add('hidden');
-            // Show selected language menu
+            document.getElementById('mainMenu').classList.remove('hidden');
+            document.querySelectorAll('.menu-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`menu-${lang}`).classList.remove('hidden');
-            // Store selected language
             localStorage.setItem('selectedLanguage', lang);
         }
 
         function showLanguageSelect() {
-            // Hide all menus
             document.querySelectorAll('[id^="menu-"]').forEach(menu => menu.classList.add('hidden'));
-            // Show language selection
             document.getElementById('language-select').classList.remove('hidden');
-            // Clear stored language
             localStorage.removeItem('selectedLanguage');
         }
 
@@ -276,11 +271,12 @@
             window.location.href = `${page}.html?lang=${lang}`;
         }
 
-        // Check for stored language preference
         window.onload = function() {
             const storedLang = localStorage.getItem('selectedLanguage');
             if (storedLang) {
                 selectLanguage(storedLang);
+            } else {
+                document.getElementById('language-select').classList.remove('hidden');
             }
         };
     </script>
